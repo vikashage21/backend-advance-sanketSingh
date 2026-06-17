@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book ticket task</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function registerController() {
+            document.write(document.querySelector('#movie').value)
+        }
+</script>
+</head >
+
+            <body class="container-fluid">
+
+    <!-- Open Modal -->
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#movieContainer">
+                    Book
+                </button>
+
+                <!-- Modal -->
+                <div id="movieContainer" class="modal fade">
+
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+
+                            <!-- Header -->
+                            <div class="modal-header">
+                                <h3>Select Movie Here</h3>
+
+                                <button class="btn btn-warning" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="modal-body">
+
+                                <select class="form-select" id="movie">
+                                    <option>Select Movie</option>
+                                    <option>Pathan</option>
+                                </select>
+
+                                <select class="form-select">
+                                    <option>Select city</option>
+                                    <option>bangaluru</option>
+                                </select>
+                                <select class="form-select">
+                                    <option>Select seat</option>
+                                    <option>front</option>
+                                </select>
+                                <button class="bnt btn-primary" onclick="registerController()"> save</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    </body>
+
+</html>
