@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function onbodyLoad() {
+            // by using string literal we can bind the data
+
+            //     const heading = prompt('please provide the heading')
+            //     const types = prompt('please provide the type');
+            //     const btnType = prompt('please provide button text')
+
+            //     let template = `
+            //      <h1>${heading} </h1>
+            //     <input type="${types}">
+            //     <button>${btnType}</button
+            // `
+            //     document.write(template)
+
+            // ========================================
+            // in js some char is non printable char
+            // for this we have to use / slash to print the non printable char 
+            // for example 
+            // const imageSrc = 'D:\pw coding course\advance\nareshITjavascrpit\project\public\images\img.jpg'
+            // in this string slash is non printable char so we have to \\ to print the char
+            const imageSrc = 'public\\images\\img.jpg';
+            // note  : - while serving the file throw http we have to use absolute path not relative path .. 
+            const pic = new Image()
+            pic.src = imageSrc;
+            document.body.append(pic)
+            // some string formatting methods
+            // =============================================
+
+            // let input = prompt('please provide the information heading , email , password')
+            // const [heading, email, password] = input.split(' ')
+            // console.log(password)
+            // let error = ''
+            // if (!password) {
+            //     error = 'enter your password'.fontcolor('red') // string method
+
+            // }
+            // let template2 = `
+            // <h1>${heading}</h1>
+            // <input type="email" value="${email == undefined ? 'example@gmail.com' : email}" ></input>
+            // <input type="text" value="${password == undefined ? "12345" :  password}"></input>
+            // <p>${error}</p>
+            // <button>loin</button>
+            // `
+            // document.write(template2)
+            
+
+            // using some string method here 
+            
+
+        }
+
+    </script>
+</head>
+
+<body onload="onbodyLoad()">
+
+</body>
+
+</html>
