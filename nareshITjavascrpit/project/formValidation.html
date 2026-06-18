@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</link>
+<script>
+    function verifyEmail() {
+        const userEmail = document.getElementById('emailIpt').value.trim()
+        const ErrorResult = document.getElementById('error')
+// ==================== use return keyword to stop the execution after the condition match.
+
+        if (!userEmail) {
+            ErrorResult.innerHTML = 'please Enter your email'.fontcolor('red')
+            return
+
+        }
+        if (userEmail.length < 10) {
+            ErrorResult.innerHTML = 'Email should less 10 and greater than 4'.fontcolor('red')
+            return
+
+        }
+        if (!userEmail.includes('@gmail.com')) {
+            ErrorResult.innerHTML = 'email should contain @gmail.com'.fontcolor('red')
+            return
+        }
+    }
+
+
+</script>
+</head>
+
+<body class="container-fluid">
+
+    <input id="emailIpt" onkeyup="verifyEmail()" class="form-control w-50 m-2" type="text"
+        placeholder="Enter your email">
+    <p id="error">
+    </p>
+    <button class="btn btn-primary">login</button>
+
+
+
+</body>
+
+</html>
