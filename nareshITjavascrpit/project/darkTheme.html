@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </link>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </link>
+    <style>
+        .dark-theme {
+            background: black;
+            color: white;
+            padding: 40px;
+            border-radius: 40px
+        }
+    </style>
+
+    <script>
+        // ======================
+        function handelTheme() {
+            const checkInput = document.getElementById('checkIp')
+            const form = document.getElementById('formContainer')
+            const btn = document.querySelector('button')
+            if (checkInput.checked) {
+                form.className = 'dark-theme'
+                btn.className = 'btn bg-white mt-2 text-black'
+            } else {
+                form.classList = ""
+                 btn.className = 'btn bg-white mt-2 text-black'
+
+            }
+        }
+
+
+    </script>
+</head>
+
+<body class="container-fluid">
+    <div class="container d-flex ">
+        <form id="formContainer">
+            <input id="checkIp" class="form-check-input p-2 m-2" onClick="handelTheme()" type="checkbox"> dark mode
+            <h1>user login</h1>
+            <input id="userEmail" class="form-control" type="email" required placeholder="Enter your email">
+            <input id="userPassword" class="form-control" type="password" required placeholder="Enter your password">
+            <button class="btn bg-dark text-white"> login</button>
+        </form>
+    </div>
+    <script src="node_modules/jquery/src/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
