@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>verify mobile </title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script>
+        let regex = / /
+        function handelFlag() {
+            const country = document.getElementById('country')
+            const pic = document.getElementById('flagPic');
+            const textValue = document.getElementById('textValue')
+            if (country.value == 'india') {
+                pic.src = 'public/images/img.jpg';
+                textValue.placeholder = '+91 10 digit';
+                regex = /^\+91\d{10}$/
+            } else if (country.value == 'us') {
+                pic.src = 'public/images/us.jpg'
+                textValue.placeholder = '+1 212 555 1234 '
+                regex = /^\+1\d{10}$/;
+            } else if (country.value == 'uk') {
+                pic.src = 'public/images/uk.jpg'
+                textValue.placeholder = ' (212) 555-1234'
+                regex = /^\+44\d{10}$/;
+            }
+        }
+
+        function registerNumber() {
+
+            const textValue = document.getElementById('textValue').value;
+            if (regex.test(textValue)) {
+                document.write('register completed successfully')
+            } else {
+                document.write('invalid phone')
+            }
+
+
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <div class="container-fluid">
+        <div class="d-flex gap-2">
+            <select id="country" name="" onchange="handelFlag()" id="" class="form-select w-50">
+                <option> select your country</option>
+                <option value="india"> india</option>
+                <option value="us">us</option>
+                <option value="uk">uk</option>
+            </select>
+            <img src="" id="flagPic" style="width:40px ; border-radius :50%" alt="country flag">
+        </div>
+        <input type="text" id="textValue" value="">
+        <button onClick="registerNumber()" class="btn btn-primary">register</button>
+    </div>
+
+</body>
+
+</html>
