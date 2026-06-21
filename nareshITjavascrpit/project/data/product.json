@@ -1,0 +1,54 @@
+{
+  "brand": "vivo",
+  "model": "Vivo V29 Pro",
+  "release_year": 2023,
+  "os": {
+    "name": "Android",
+    "version": "13",
+    "custom_ui": "Funtouch OS 13"
+  },
+  "hardware": {
+    "dimensions_mm": {
+      "height": 164.2,
+      "width": 74.4,
+      "thickness": 7.5
+    },
+    "weight_g": 188,
+    "display": {
+      "size_inch": 6.78,
+      "type": "AMOLED",
+      "resolution": "1260 x 2800",
+      "refresh_rate_hz": 120
+    },
+    "chipset": "MediaTek Dimensity 8200",
+    "ram_gb": 8,
+    "storage_gb": 256,
+    "battery_mAh": 4600,
+    "charging": {
+      "wired_watts": 80,
+      "wireless_watts": 0
+    },
+    "camera": {
+      "rear": [
+        { "megapixel": 50, "type": "Wide" },
+        { "megapixel": 12, "type": "Telephoto" },
+        { "megapixel": 8, "type": "Ultrawide" }
+      ],
+      "front": { "megapixel": 50 }
+    }
+  },
+  "connectivity": {
+    "network": ["2G", "3G", "4G", "5G"],
+    "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+    "bluetooth": "5.3",
+    "usb": "USB Type-C",
+    "nfc": true
+  },
+  "sensors": [
+    "accelerometer",
+    "gyroscope",
+    "proximity",
+    "ambient_light",
+    "in-display_fingerprint"
+  ]
+}
