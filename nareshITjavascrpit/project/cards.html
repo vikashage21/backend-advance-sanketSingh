@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            width: 250px;
+            height: 250px;
+            padding: 40px;
+            margin: 10px 20px;
+
+
+        }
+
+        .card:hover {
+            transform: scale(1.5);
+            box-shadow: 5px 10px 10px black;
+        }
+    </style>
+    <script>
+        let arr = ['public/images/img.jpg', 'public/images/img.png']
+        // creating a dynamic element in html . images
+        function onBodyLoad() {
+            const imageContainer = document.getElementById('box')
+            for (let imageSrc of arr) {
+                const pic = document.createElement('img');
+                pic.src = imageSrc;
+                pic.classList = 'card'
+                imageContainer.appendChild(pic)
+
+            }
+
+        }
+    </script>
+</head>
+
+<body onload="onBodyLoad()">
+    <marquee id="box" scrollamount="10" onmouseover="stop()" onmouseleave="start()">
+
+    </marquee>
+
+    </marquee>
+
+</body>
+
+</html>
