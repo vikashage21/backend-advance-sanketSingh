@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array manipulation</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/dist/bootstrap-icons.css">
+    </link>
+
+    <script>
+
+        let cityList = []
+
+        function bodyLoad() {
+
+            document.querySelector('select').innerHTML = ''
+            for (let city of cityList) {
+                const options = document.createElement('option');
+                options.innerText = city
+                document.querySelector('select').appendChild(options)
+            }
+
+        }
+
+        // =========== add the city in arrays
+
+        function addHandler() {
+
+            let cityValue = document.getElementById('listCity').value;
+            if (cityValue) {
+                cityList.push(cityValue)
+                document.getElementById('listCity').value = ''
+                bodyLoad()
+
+            }
+
+        }
+
+
+        // function to clear the city array
+
+        function clearHandle() {
+            cityList.length = 0
+            bodyLoad()
+        }
+
+        // remove the element by selecting the element
+
+        function removeHandler() {
+            const txtValue = document.getElementById('citySelect').value
+            let index = cityList.indexOf(txtValue);
+            cityList.splice(index, 1)
+            bodyLoad()
+        }
+
+
+    </script>
+</head>
+
+<body onload="bodyLoad()">
+    <div class="container">
+        <input id='listCity' class="form-control" type="text" placeholder='enter the city name'>
+        <button class="btn btn-primary" onclick="addHandler()">add </button>
+        <select id="citySelect">
+
+        </select>
+
+        <button onclick="removeHandler()" class="btn btn-danger">
+            <span class="bi bi-trash-fill">
+            </span>
+            remove city
+        </button>
+        <button onclick="clearHandle()" class="btn btn-danger">
+            clear all
+        </button>
+    </div>
+</body>
+
+</html>
