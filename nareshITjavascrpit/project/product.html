@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product
+    </title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        .card {
+            padding: 4px 4px;
+        }
+
+        .desc {
+            width: 50%;
+            margin: 0 auto;
+            padding: 4px 4px;
+            text-align: center;
+
+        }
+    </style>
+    <script>
+        function loadProduct() {
+            fetch('./data/product.json').then((Response) => {
+                return Response.json()
+            }).then((product) => {
+
+                const imgContainer = document.getElementById('imgContiner')
+                const pic = document.createElement('img')
+                pic.src = 'public/images/phone.jpg'
+                pic.style.width = '400px'
+                pic.className = 'card'
+                imgContainer.appendChild(pic)
+
+                // adding data to description container 
+
+                const descContainer = document.getElementById('descContainer')
+                descContainer.className = 'desc'
+                let heading = document.createElement('p');
+                heading.innerHTML = `product name :  ${product?.brand}`.bold().fontcolor('blue');
+                let productBrand = document.createElement('p')
+                productBrand.innerText = `model  : ${product?.model}`;
+                let releaseDate = document.createElement('p')
+                releaseDate.innerText = `release years: ${product?.release_year}`;
+                // appending to description container
+
+
+                descContainer.append(heading, productBrand, releaseDate)
+
+                for (let properties in product?.os) {
+                    let p = document.createElement('p');
+                    p.innerHTML = `${properties} : ${product?.os[properties]}`
+                    descContainer.append(p)
+
+                }
+
+            }).catch((error) => {
+                console.log('not able to fetch the data ', error)
+            })
+        }
+
+        function bodyLoad() {
+            loadProduct()
+
+
+        }
+    </script>
+</head>
+
+<body class="container-fluid" onload="bodyLoad()">
+    <div class="container ">
+        <div class="row">
+            <div id="imgContiner" class="col-6">
+
+            </div>
+            <div id="descContainer" class="col-6">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

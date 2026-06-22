@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snapper</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        #brandName {
+            font-size: 20px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .productImage {
+            width: auto;
+            height: 200px;
+
+        }
+
+        .desc {
+            color: grey
+        }
+    </style>
+
+    <script>
+
+        let categoryList = ['men\'s clothing', 'jewelery', 'electronics',
+            'women\'s clothing'
+        ]
+        let cartList = []
+        // fake api 
+
+
+        function loadProduct() {
+
+            fetch('https://fakestoreapi.com/products').then((res) => {
+                return res.json()
+            }).then((data) => {
+                // display the data into productsContainer
+
+                for (let items of data) {
+                    const productsContainer = document.getElementById('productsContainer');
+                    const pic = document.createElement('img');
+                    pic.src = items.image
+                    pic.classList = 'productImage card p-5 m-auto mt-5'
+                    const title = document.createElement('p')
+                    title.innerText = items.title
+                    title.className = 'm-2 p-2'
+
+                    const price = document.createElement('p')
+                    price.innerHTML = "&#8377" + ` ${items.price} `
+                    price.className = 'm-2 p-2 text-primary'
+
+                    const p = document.createElement('p')
+                    p.className = 'desc'
+                    p.innerText = `${items.description}`.slice(0, items.description.length - 10) + '...'
+                    const addButton = document.createElement('button');
+
+                    addButton.onclick = () => addCartHandler(items?.id)
+                    addButton.classList = 'btn btn-primary bi bi-cart'
+                    addButton.innerText = ' add to cart'
+                    productsContainer.append(pic, title, price, p, addButton)
+                }
+
+            }).catch((error) => {
+                console.log(error)
+            })
+
+        }
+
+
+
+        function loadCategory() {
+
+            for (let category of categoryList) {
+                // create a options 
+
+                const option = document.createElement('option')
+                option.text = category
+                option.value = category
+                document.querySelector('select').append(option)
+
+            }
+
+
+        }
+        function addCartHandler(id) {
+            fetch('https://fakestoreapi.com/products').then((res) => {
+                return res.json()
+            }).then((data) => {
+                const singleProduct = data.find((el) => el.id == id)
+                cartList.push(singleProduct)
+                document.getElementById('count').innerText = cartList.length
+            })
+
+        }
+
+        function handleCategory() {
+            const selectValue = document.getElementById('categorySelect').value;
+            fetch('https://fakestoreapi.com/products').then((res) => {
+                return res.json()
+            }).then((data) => {
+                const filterData = data.filter((el) => el.category == selectValue)
+
+                document.getElementById('productsContainer').innerHTML = ''
+                for (let items of filterData) {
+                    const productsContainer = document.getElementById('productsContainer');
+                    const pic = document.createElement('img');
+                    pic.src = items.image
+                    pic.classList = 'productImage card p-5 m-auto mt-5'
+                    const title = document.createElement('p')
+                    title.innerText = items.title
+                    title.className = 'm-2 p-2'
+
+                    const price = document.createElement('p')
+                    price.innerHTML = "&#8377" + ` ${items.price} `
+                    price.className = 'm-2 p-2 text-primary'
+
+                    const p = document.createElement('p')
+                    p.className = 'desc'
+                    p.innerText = `${items.description}`.slice(0, items.description.length - 10) + '...'
+                    const addButton = document.createElement('button');
+
+                    addButton.onclick = () => addCartHandler(items?.id)
+                    addButton.classList = 'btn btn-primary bi bi-cart'
+                    addButton.innerText = ' add to cart'
+                    productsContainer.append(pic, title, price, p, addButton)
+                }
+
+            })
+
+        }
+
+        function loadCart() {
+
+            let totalPrice = 0;
+
+            const cartBody = document.querySelector(".modal-body");
+            const table = document.createElement("table");
+
+            // Clear previous content
+            cartBody.innerHTML = "";
+
+            if (cartList.length === 0) {
+                cartBody.innerHTML = `
+            <div>
+                <h1>Cart is empty now</h1>
+            </div>
+        `;
+                return;
+            }
+
+            for (let item of cartList) {
+
+                const tr = document.createElement("tr");
+
+                const th = document.createElement("th");
+                const td = document.createElement("td");
+                const price = document.createElement("td");
+
+                th.innerText = item.title;
+
+                td.innerHTML = `
+            <img src="${item.image}"
+                 width="100">
+        `;
+
+                price.innerText = `₹${item.price}`;
+                price.style.color = "blue";
+
+                tr.append(th, td, price);
+
+                table.append(tr);
+
+                cartBody.appendChild(table);
+
+                totalPrice += item.price;
+            }
+
+            // Show total once
+            const tlPrice = document.createElement("h3");
+
+            tlPrice.innerText = `Total Price: ₹${totalPrice}`;
+
+            cartBody.appendChild(tlPrice);
+        }
+
+        function bodyLoad() {
+            loadProduct()
+            loadCategory()
+
+
+        }
+
+
+    </script>
+</head>
+
+<body onload="bodyLoad()">
+    <header>
+        <div class="d-flex bg-black w-100 p-3 ">
+            <nav class="d-flex gap-5">
+                <span id="brandName" class="text-white">
+                    snapper
+                </span>
+
+                <!-- anchor tags  -->
+
+                <ul class="d-flex gap-2 text-decoration-none list-unstyled text-white ">
+                    <li>home</li>
+                    <li>electronic</li>
+                    <li>women's wears</li>
+                    <li>men's cloths</li>
+                </ul>
+                <div class="d-flex gap-5">
+                    <span class="bi bi-search text-white"></span>
+
+                    <div class="position-relative">
+
+                        <span onclick="loadCart()" class="bi bi-cart text-white fs-4" role="button"
+                            data-bs-toggle="modal" data-bs-target="#cartModal">
+                        </span>
+
+                        <span id="count"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+                            0
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </nav>
+        </div>
+
+
+
+    </header>
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">cart <span class="bi bi-cart-check"></span></h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class=" col-3">
+                    <div class="d-flex">
+                        <span class="me-2">category</span>
+                        <select onclick="handleCategory()" class="form-select w-100 mt-2 p-1" name=""
+                            id="categorySelect">
+                            <!-- data will generate dynamic  -->
+                        </select>
+                    </div>
+                </div>
+                <div id="productsContainer" class="col-9 justify-content-center text-center p-5 align-items-center">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="node_modules/jquery/dist/jquery.js">
+    </script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
