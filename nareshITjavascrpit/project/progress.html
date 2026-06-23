@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script>
+
+
+        function loader() {
+            let count = 0;
+
+            setInterval(() => {
+
+                if (count == 100) {
+                    return location.href = '../project/snapper.html'
+                }
+                document.querySelector('progress').value = count;
+                document.querySelector('.count').innerHTML = `% ${count}`
+                count++
+
+            }, 100)
+
+
+
+        }
+        function bodyLoad() {
+            loader()
+
+        }
+    </script>
+</head>
+
+<body onload="bodyLoad()" class="container-fluid ">
+    <div class="container  justify-content-center align-content-center">
+        <progress min="'1" max="100" value="1"></progress>
+        <p class="count"></p>
+
+    </div>
+
+
+</body>
+
+</html>
