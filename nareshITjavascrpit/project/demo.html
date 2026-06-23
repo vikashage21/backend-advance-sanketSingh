@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        ul li {
+            list-style-type: none;
+            margin: 10px;
+        }
+    </style>
+    <script>
+
+        function getTime() {
+            return time = new Date().toLocaleTimeString()
+        }
+
+        function bodyLoad() {
+            const DateContainer = document.getElementById('nowDate')
+            const date = new Date()
+            const weekend = ['mon', 'tues', 'wed', 'thur', 'fri', 'str', 'sun'];
+            const months = ['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'august']
+
+            setInterval(() => {
+                DateContainer.innerHTML = `<span class='bi bi-calendar'> ${weekend[date.getDay()]} ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}  </span> <span class="bi bi-clock m-2">${getTime()} </span>`
+                getTime()
+            }, 1000)
+
+
+        }
+
+    </script>
+</head>
+
+<body class="container-fluid" onload="bodyLoad()">
+    <nav class="bg-danger">
+        <ul class="d-flex justify-content-center ">
+            <li>hone</li>
+            <li>contact</li>
+        </ul>
+
+        <div id="nowDate">
+
+        </div>
+
+    </nav>
+
+</body>
+
+</html>
