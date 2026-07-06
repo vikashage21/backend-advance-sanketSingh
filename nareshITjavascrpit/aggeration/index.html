@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class scheme {
+            hdfc = 'we provide better features to our customer of hdfc bank'
+            lic = 'we provide life insurance to our customers '
+            print() {
+                document.write(`${this.hdfc} and ${this.lic}`)
+            }
+        }
+
+        class schemeNew {
+            emi = 'new features of emi is added to our bank'
+            print() {
+                const obj = new scheme;
+                obj.print()
+                document.write(`${this.emi}`)
+            }
+
+        }
+
+        function install() {
+            let val = document.querySelector('select').value;
+            console.log(val)
+            if (val === 'ver1') {
+                const obj = new scheme;
+                obj.print()
+            }
+
+            if (val === 'ver2') {
+                const obj = new schemeNew
+                obj.print()
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <select>
+        <option>select your version</option>
+        <option value="ver1">ver1</option>
+        <option value="ver2">ver2</option>
+
+    </select>
+    <button onclick="install()">install</button>
+</body>
+
+</html>
