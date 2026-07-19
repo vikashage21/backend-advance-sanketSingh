@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- adding jsx link here -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+
+    <script type="text/babel">
+
+
+        let employee = [
+            { name: "vikash", profileIamge: "https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" },
+            { name: "soniya", profileIamge: "https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" },
+            { name: "mohit", profileIamge: "https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" },
+
+
+
+        ]
+
+        // babel is compiler which help to covert the jsx code into javascript code
+
+        // creating a container in jsx
+
+
+        function Cards({ index, name, profileIamge }) {
+            return <div className="d-flex flex-column " >
+
+                <div className="container mb-5" key={index}>
+                    <div className="card p-5 text-center mx-auto w-50">
+                        <img src={profileIamge} alt="" />
+                        <p className="mt-2"> <b>{name}</b> </p>
+                        <button className="btn btn-primary w-25"> Add </button>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        }
+
+        // defined header component
+
+
+        function Header() {
+            return (
+                <nav className="bg-primary p-2 mb-2 w-100" >
+                    <ul className="list-unstyled" >
+                        <li> home </li>
+                    </ul>
+                </nav>
+            )
+        }
+        // defined footer component
+
+        function Footer() {
+            return (
+
+                <div className="bg-black p-5 text-center">
+                    footer
+                </div>
+
+            )
+        }
+
+
+
+        // define main function
+
+        function Main() {
+            return (
+
+                employee.map((e) => {
+                    return (
+                        <Cards key={e.id} name={e.name} profileIamge={e.profileIamge} />
+                    )
+                })
+
+            )
+        }
+
+
+
+        // define app function
+
+        function App() {
+            return (
+
+                <div>
+                    <Header />
+                    <Main />
+                    <Footer />
+                </div>
+
+            )
+        }
+
+
+
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+
+</body>
+
+</html>
