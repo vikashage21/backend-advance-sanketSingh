@@ -10,12 +10,12 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <!-- adding jsx link here -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link rel="stylesheet"  href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
     <div id="root">
-        hhh
+    
     </div>
 
     <script type="text/babel">
@@ -35,14 +35,14 @@
         // creating a container in jsx
 
 
-        function container(data){
-            return  <div className="d-flex flex-column " >
+        function cards(data) {
+            return <div className="d-flex flex-column " >
                 <h1 className="text-center m-5">employee details</h1>
                 {
-                    data.map((e , index) => {
+                    data.map((e, index) => {
                         return (
 
-                            <div className="container mb-5" key={index}>  
+                            <div className="container mb-5" key={index}>
                                 <div className="card p-5 text-center mx-auto w-50">
                                     <img src="https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" alt="" />
                                     <p className="mt-2"> <b>{e.name}</b> </p>
@@ -56,8 +56,18 @@
             </div>
         }
 
+        let container = <div>
+            {cards(employee)}
+            {cards(employee)}
+         
 
-        ReactDOM.render(container(employee), document.getElementById('root'))
+        //to call function in react , the other way is using as element component 
+
+            
+        </div>
+
+
+        ReactDOM.render(container, document.getElementById('root'))
     </script>
 
 </body>
