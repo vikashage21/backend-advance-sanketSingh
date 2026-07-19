@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- adding jsx link here -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet"  href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="root">
+        hhh
+    </div>
+
+    <script type="text/babel">
+
+
+        let employee = [
+            { name: "vikash", profileIamge: "https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" },
+            { name: "soniya", profileIamge: "https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" },
+            { name: "mohit", profileIamge: "https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" },
+
+
+
+        ]
+
+        // babel is compiler which help to covert the jsx code into javascript code
+
+        // creating a container in jsx
+
+
+        let container =  <div className="d-flex flex-column " >
+                <h1 className="text-center m-5">employee details</h1>
+                {
+                    employee.map((e , index) => {
+                        return (
+
+                            <div className="container mb-5" key={index}>  
+                                <div className="card p-5 text-center mx-auto w-50">
+                                    <img src="https://media.istockphoto.com/id/1313720249/photo/profile-of-a-female-doctor.jpg?s=612x612&w=0&k=20&c=-u2t80JS1QBeMEMpZt1A5_Z6kSOXikhYnQDvswKdvRo=" alt="" />
+                                    <p className="mt-2"> <b>{e.name}</b> </p>
+                                    <button className="btn btn-primary w-25"> Add </button>
+                                </div>
+
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
+
+        ReactDOM.render(container, document.getElementById('root'))
+    </script>
+
+</body>
+
+</html>
